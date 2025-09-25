@@ -1,0 +1,40 @@
+# Code Owners for Infinite Canvas Diagram Application
+# These owners will be automatically requested for review when someone opens a pull request
+
+# Default owners for everything in the repo
+* @team-lead @senior-dev
+
+# Core systems require senior review
+/src/core/ @senior-dev @architect
+/src/core/viewport/ @graphics-expert
+/src/core/navigation/ @ux-expert
+
+# Components can be reviewed by any developer
+/src/components/ @frontend-team
+
+# Testing requires QA review
+/tests/ @qa-team
+/tests/e2e/ @qa-lead
+*.spec.ts @qa-team
+*.test.ts @qa-team
+
+# Documentation
+/docs/ @tech-writer @team-lead
+*.md @tech-writer
+/AGENTS.md @team-lead @architect
+
+# Configuration files
+/.github/ @devops-team @team-lead
+/package.json @team-lead @senior-dev
+/tsconfig.json @senior-dev
+/.eslintrc* @senior-dev
+/vite.config.ts @senior-dev
+
+# CI/CD
+/.github/workflows/ @devops-team
+/playwright.config.ts @qa-lead @devops-team
+
+# Security-sensitive files
+/.env* @security-team @team-lead
+/src/utils/auth* @security-team
+/src/utils/crypto* @security-team
