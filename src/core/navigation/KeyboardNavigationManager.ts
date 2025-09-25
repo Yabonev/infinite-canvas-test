@@ -373,13 +373,15 @@ export class KeyboardNavigationManager {
       });
     }
 
+    const wasSelected = this.state.selectedId;
     this.elements.delete(this.state.selectedId);
     this.onElementDelete?.(this.state.selectedId);
 
     // Select next element
     this.navigateNext();
-    if (this.state.selectedId === this.state.selectedId) {
+    if (this.state.selectedId === wasSelected) {
       this.state.selectedId = null;
+      this.onSelectionChange?.(null);
     }
   }
 

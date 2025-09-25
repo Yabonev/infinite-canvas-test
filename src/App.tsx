@@ -9,6 +9,7 @@ function App() {
   const navManagerRef = useRef<KeyboardNavigationManager | null>(null)
   const [elements, setElements] = useState<DiagramElement[]>([])
   const [selectedId, setSelectedId] = useState<string | null>(null)
+  const [mode, setMode] = useState<'select' | 'create' | 'connect'>('select')
 
   useEffect(() => {
     if (canvasRef.current && !viewportRef.current) {
@@ -40,8 +41,8 @@ function App() {
         renderCanvas()
       }
 
-      navManager.onModeChange = (mode) => {
-        console.log('Mode changed to:', mode)
+      navManager.onModeChange = (newMode) => {
+        setMode(newMode)
       }
 
       // Initial render
@@ -172,8 +173,7 @@ function App() {
       <div className="bg-white border-b border-gray-200 px-4 py-3">
         <h1 className="text-2xl font-bold text-gray-900">Infinite Canvas Diagram</h1>
         <div className="text-sm text-gray-600 mt-1">
-          Selected: {selectedId || 'None'} | Elements: {elements.length} |
-          Mode: {navManagerRef.current?.getState().mode || 'select'}
+          Selected: {selectedId || 'None'} | Elements: {elements.length} | Mode: {mode}
         </div>
         <div className="text-xs text-gray-500 mt-1">
           Press 'c' to create class, 'm' for method, arrows to navigate, 'f' to focus
