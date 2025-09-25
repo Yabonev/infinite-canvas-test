@@ -153,6 +153,11 @@ export class ViewportManager {
     return { ...this.viewport };
   }
 
+  // Get canvas element
+  getCanvas(): HTMLCanvasElement {
+    return this.canvas;
+  }
+
   // Set viewport state
   setViewport(viewport: Viewport) {
     this.viewport = { ...viewport };

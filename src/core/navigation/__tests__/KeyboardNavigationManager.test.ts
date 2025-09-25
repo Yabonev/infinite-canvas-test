@@ -1,16 +1,7 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { KeyboardNavigationManager } from '../KeyboardNavigationManager';
 import { ViewportManager } from '../../viewport/ViewportManager';
 import { DiagramElement } from '../../../types/diagram';
-
-// Mock ViewportManager
-const mockViewport = {
-  canvas: { width: 800, height: 600 },
-  getViewportBounds: vi.fn(() => ({ x: 0, y: 0, width: 800, height: 600 })),
-  focusOnBounds: vi.fn(),
-  setViewport: vi.fn(),
-  zoomAt: vi.fn(),
-} as any;
 
 describe('KeyboardNavigationManager', () => {
   let navManager: KeyboardNavigationManager;

@@ -113,9 +113,9 @@ export class KeyboardNavigationManager {
 
   private isInputActive(): boolean {
     const active = document.activeElement;
-    return active instanceof HTMLInputElement ||
+    return !!(active instanceof HTMLInputElement ||
            active instanceof HTMLTextAreaElement ||
-           (active && active.getAttribute('contenteditable') === 'true');
+           (active && active.getAttribute('contenteditable') === 'true'));
   }
 
   // Spatial navigation - find nearest element in direction
@@ -395,17 +395,19 @@ export class KeyboardNavigationManager {
   }
 
   private zoomIn() {
+    const canvas = this.viewport.getCanvas();
     const center = {
-      x: this.viewport.canvas.width / 2,
-      y: this.viewport.canvas.height / 2
+      x: canvas.width / 2,
+      y: canvas.height / 2
     };
     this.viewport.zoomAt(center, 1.2);
   }
 
   private zoomOut() {
+    const canvas = this.viewport.getCanvas();
     const center = {
-      x: this.viewport.canvas.width / 2,
-      y: this.viewport.canvas.height / 2
+      x: canvas.width / 2,
+      y: canvas.height / 2
     };
     this.viewport.zoomAt(center, 0.8);
   }
@@ -449,7 +451,7 @@ export class KeyboardNavigationManager {
   }
 
   // Event callbacks (implement these in your application)
-  onSelectionChange?: (id: string) => void;
+  onSelectionChange?: (id: string | null) => void;
   onElementCreate?: (element: DiagramElement) => void;
   onElementMove?: (id: string, element: DiagramElement) => void;
   onElementDelete?: (id: string) => void;

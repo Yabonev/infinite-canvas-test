@@ -3,8 +3,8 @@ module.exports = {
   env: { browser: true, es2022: true },
   extends: [
     'eslint:recommended',
-    '@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-type-checked',
+    '@typescript-eslint/recommended-type-checked',
+    'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
     'prettier'
   ],
